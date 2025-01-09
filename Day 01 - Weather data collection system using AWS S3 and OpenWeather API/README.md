@@ -1,2 +1,2 @@
-# 30days_DevOpsAllStarsChallenge
-This is a 30day DevOps All Stars Challenge where there is big dive into the world of AWS and build real-world cloud project
+# Day 01 - Weather Data Collection System Using AWS S3 and OpenWeather API
+This project is a weather data collection system that demonstrates core DevOps Principles.
