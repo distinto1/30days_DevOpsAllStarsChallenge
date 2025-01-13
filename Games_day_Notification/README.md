@@ -32,6 +32,7 @@ The system leverages AWS Lambda, SNS, and EventBridge to provide reliable, scala
 
 ## 🏀 Project Structure
 
+```bash
 Game_day_notification/
 ├── src/
 │   └── game_notification.py                            # Main Lambda function
@@ -41,6 +42,7 @@ Game_day_notification/
 │   └── game_notification_lambda_policy.json            # Lambda execution permissions
 ├── .gitignore
 └── README.md
+```
 
 
 ## 🏀 Installation & Setup
