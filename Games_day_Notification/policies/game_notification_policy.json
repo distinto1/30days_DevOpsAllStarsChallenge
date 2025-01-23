@@ -4,7 +4,7 @@
         {
             "Effect": "Allow",
             "Action": "sns:Publish",
-            "Resource": "arn:aws:sns:us-east-1:730335444705:gameday_notification_topic"
+            "Resource": "arn:aws:sns:REGION:ACCOUNT_ID:gd_topic"
         }
     ]
 }
