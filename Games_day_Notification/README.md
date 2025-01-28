@@ -39,9 +39,9 @@ Game_day_notification/
 ├── src/
 │   └── game_notification.py                            # Main Lambda function
 ├── policies/
-│   ├── game_notification_policy.json                   # SNS publishing permissions
-│   ├── game_notification_eventbridge_policy.json       # EventBridge permissions
-│   └── game_notification_lambda_policy.json            # Lambda execution permissions
+│   ├── nba_game_notification_policy.json                   # SNS publishing permissions
+│   ├── nba_game_notification_eventbridge_policy.json       # EventBridge permissions
+│   └── nba_game_notification_lambda_policy.json            # Lambda execution permissions
 ├── .gitignore
 └── README.md
 ```
@@ -80,12 +80,12 @@ Game_day_notification/
 
   * Open the IAM service in the AWS Management Console.
   * Navigate to Policies → Create Policy.
-  * Click JSON and paste the JSON policy from game_notification_policy.json file
+  * Click JSON and paste the JSON policy from nba_game_notification_policy.json file
   * Replace REGION and ACCOUNT_ID with your AWS region and account ID.
   
   * Click Next: Tags (you can skip adding tags).
   * Click Next: Review.
-  * Enter a name for the policy (e.g., game_notification_policy).
+  * Enter a name for the policy (e.g., nba_game_notification_policy).
   
   * Review and click Create Policy.
 
@@ -94,8 +94,8 @@ Game_day_notification/
   * Click Roles → Create Role.
   * Select AWS Service and choose Lambda.
   * Attach the following policies:
-    * SNS Publish Policy (gd_sns_policy) (created in the previous step).
-    * Lambda Basic Execution Role (AWSLambdaBasicExecutionRole) (an AWS managed policy).
+    * SNS Publish Policy (nba_games_notification_policy25) created in the previous step.
+    * Lambda Basic Execution Role (AWSLambdaBasicExecutionRole) this is an AWS managed policy.
   * Click Next: Tags (you can skip adding tags).
   * Click Next: Review.
   * Enter a name for the role.
@@ -107,7 +107,7 @@ Game_day_notification/
 * Open the AWS Management Console and navigate to the Lambda service.
 * Click Create Function.
 * Select Author from Scratch.
-* Enter a function name (e.g., gd_notifications).
+* Enter a function name (e.g., nba_games_notification_function).
 * Choose Python 3.x as the runtime.
 * Assign the IAM role created earlier to the function.
 * Click create function to complete the process.
@@ -134,5 +134,5 @@ Game_day_notification/
 * Go to Rules → Create a Rule.
 * Select Event Source: Schedule.
 * Set the cron schedule for when you want updates (e.g., hourly).
-* Under Targets, select the Lambda function (gd_notifications) and save the rule.
+* Under Targets, select the Lambda function (nba_games_notification_function) and save the rule.
 * invoke your AWS Lambda function
