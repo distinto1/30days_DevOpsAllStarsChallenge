@@ -37,7 +37,7 @@ The system leverages AWS Lambda,AWS SNS, and AWS EventBridge to provide reliable
 ```bash
 Game_day_notification/
 ├── src/
-│   └── game_notification.py                            # Main Lambda function
+│   └── nba_game_notification.py                            # Main Lambda function
 ├── policies/
 │   ├── nba_game_notification_policy.json                   # SNS publishing permissions
 │   ├── nba_game_notification_eventbridge_policy.json       # EventBridge permissions
