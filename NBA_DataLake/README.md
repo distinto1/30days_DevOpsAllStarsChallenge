@@ -1,4 +1,4 @@
-# NBA_DataLake
+# Building a Data Lake for NBA Analytics on AWS
 
 This repository contains the mysetup_resources.py script, which automates the creation of a data lake for NBA analytics using AWS services.
 
