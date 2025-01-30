@@ -1,8 +1,11 @@
-# Building a Data Lake for NBA Analytics on AWS
+# 🏀Building a Data Lake for NBA Analytics on AWS: A Slam Dunk Step-by-Step Guide 🏀
 
 This repository contains the mysetup_resources.py script, which automates the creation of a data lake for NBA analytics using AWS services.
 
 The script integrates Amazon S3, AWS Glue, and Amazon Athena, and sets up the infrastructure needed to store and query NBA-related data.
+
+## ARCHITECTURE
+![](./image/NBA%20DataLake%20on%20AWS-2.jpg)
 
 ## Overview
 
