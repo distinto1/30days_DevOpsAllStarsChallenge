@@ -41,48 +41,101 @@ S3: s3:CreateBucket, s3:PutObject, s3:DeleteBucket, s3:ListBucket Glue: glue:Cre
 
 ## LET'S BEGIN
 
-### Step 1: Open CloudShell Console
+### Step 1: Create a Virtual Environment
 
-Go to aws.amazon.com & sign into your account
+1. Go to aws.amazon.com & sign into your account
 
-In the top, next to the search bar you will see a square with a >_ inside, click this to open the CloudShell
+2. Go to AWS Console, search for EC2 and click on EC2 Dashboard.
 
-### Step 2: Create the setup_nba_data_lake.py file
+3. Click launch instance; Set your instance name, Choose Ubuntu as your AMI,
+select your instance type(t2.micro for free tier), create a key pair and set up a security group to allow port 22 and other ports.
 
-In the CLI (Command Line Interface), type
-nano setup_nba_data_lake.py
-In another window, go to GitHub
--Copy the contents inside the setup_nba_data_lake.py file
+4. Click Launch to create instance. Go to EC2 dash board find your instance, copy its public ip.
 
--Go back to the Cloudshell window and paste the contents inside the file.
+Connect via SSH
 
-Find the line of code under #Sportsdata.io configurations that says "api_key" paste your api key inside the quotations
+### Step 2: Create the mysetup_resources.py and cleanup_my_resources files
 
-Press ^X to exit, press Y to save the file, press enter to confirm the file name
-
-### Step 3: Create .env file
-
-In the CLI (Command Line Interface), type
-nano .env
-paste the following line of code into your file, ensure you swap out with your API key
+1. In your terminal, type
 
 ```bash
-SPORTS_DATA_API_KEY=your_sportsdata_api_key
-NBA_ENDPOINT=https://api.sportsdata.io/v3/nba/scores/json/Players
+nano mysetup_resources.py
+nano cleanup_my_resources.py
+```
+
+2. In another window, go to GitHub
+Copy the contents inside the mysetup_resources.py and cleanup_my_resources.py files
+Go back to your virtual environment and paste the contents inside the mysetup_resources.py and cleanup_my_resources.py files already created.
+
+### Step 3: Setup your Python environment
+
+1. Create a requirement file
+
+```bash
+nano requirement.txt
+```
+
+2. Paste the following files name in the requirements.txt file
+
+```bash
+boto3==1.34.28
+requests==2.31.0
+python-dotenv==1.0.0
 ```
 
 Press ^X to exit, press Y to save the file, press enter to confirm the file name
 
-### Step 4: Run the script
+3. Run the following commands:
 
-In the CLI type
-python3 setup_nba_data_lake.py
+```bash
+sudo apt install python3-pip -y
+sudo apt install python3.12-venv -y
+python3 -m venv venv
+source venv/bin/activate
+```
+
+4. Install all dependencies with this command
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Create .env file
+
+1. In your terminal, type
+
+```bash
+nano .env
+```
+
+Press ^X to exit, press Y to save the file, press enter to confirm the file name
+
+2. Paste the following line of code into your file, ensure you swap out with your API key
+
+```bash
+SPORTS_DATA_API_KEY=your_sportsdata_api_key
+NBA_ENDPOINT=https://api.sportsdata.io/v3/nba/scores/json/Players
+S3_BUCKET_NAME=your_s3_bucket_name
+GLUE_DATABASE_NAME=your_glue_database_name
+AWS_DEFAULT_REGION=your_default_region
+```
+
+Press ^X to exit, press Y to save the file, press enter to confirm the file name
+
+### Step 4: Run the Python Script
+
+In your terminal, type
+
+```bash
+python3 source/mysetup_resources.py
+```
+
 -You should see the resources were successfully created, the sample data was uploaded successfully and the Data Lake Setup Completed
 
 ### Step 5: Manually Check For The Resources
 
 In the Search Bar, type S3 and click blue hyper link name
--You should see 2 General purpose bucket named "Sports-analytics-data-lake"
+-You should see 2 General purpose bucket named "the_name_you_gave_your_bucket"
 
 -When you click the bucket name you will see 3 objects are in the bucket
 
@@ -95,13 +148,26 @@ Click the file name and at the top you will see the option to Open the file
 Head over to Amazon Athena and you could paste the following sample query:
 
 ```bash
+SELECT * FROM "glue_nba_datalake"."nba_players" limit 10;
+```
+
+  * Click Run -You should see an output if you scroll down under "Query Results"
+
+```bash
 SELECT FirstName, LastName, Position, Team
-FROM nba_players
+FROM  nba_players
 WHERE Position = 'PG';
 ```
 
   * Click Run -You should see an output if you scroll down under "Query Results"
 
+```bash
+SELECT FirstName, LastName, Position, Team
+FROM  nba_players
+WHERE Position = 'SF';
+```
+
+  * Click Run -You should see an output if you scroll down under "Query Results"
 
 ## What We Learned
 
