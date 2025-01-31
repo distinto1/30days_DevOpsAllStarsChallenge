@@ -5,6 +5,7 @@ This repository contains the mysetup_resources.py script, which automates the cr
 The script integrates Amazon S3, AWS Glue, and Amazon Athena, and sets up the infrastructure needed to store and query NBA-related data.
 
 ## ARCHITECTURE
+
 ![](./image/NBA%20DataLake%20on%20AWS-2.jpg)
 
 ## Overview
@@ -35,9 +36,9 @@ The mysetup_resurces.py script performs the following actions:
 
 * Copy this string because you will need to paste it later in the script
 
-* IAM Role/Permissions: Ensure the user or role running the script has the following permissions:
+* IAM Role/Permissions: Ensure the user or role running the script has the proper permissions. Refer to the Ploicies folder in GitHub.
 
-S3: s3:CreateBucket, s3:PutObject, s3:DeleteBucket, s3:ListBucket Glue: glue:CreateDatabase, glue:CreateTable, glue:DeleteDatabase, glue:DeleteTable Athena: athena:StartQueryExecution, athena:GetQueryResults
+
 
 ## LET'S BEGIN
 
