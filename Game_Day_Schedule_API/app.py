@@ -7,7 +7,7 @@ app = Flask(__name__)
 SERP_API_URL = "https://serpapi.com/search.json"
 SERP_API_KEY = os.getenv("SERP_API_KEY")  # Fixed environment variable name
 
-@app.route('/nfl-schedule', methods=['GET'])  # More specific endpoint
+@app.route('/sports', methods=['GET'])  # More specific endpoint
 def get_nfl_schedule():
     try:
         params = {
