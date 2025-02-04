@@ -85,14 +85,14 @@ def main():
         time.sleep(WAIT_TIME_BETWEEN_SCRIPTS)
 
         # Step 2: Run process_one_video.py
-        run_script("process_one_video.py")
+        run_script("process_1_video.py")
 
         # Buffer time between scripts to allow resources to stabilize
         print("Waiting for resources to stabilize...")
         time.sleep(WAIT_TIME_BETWEEN_SCRIPTS)
 
         # Step 3: Run mediaconvert_process.py
-        run_script("mediaconvert_process.py")
+        run_script("MediaConvert_process.py")
 
         # Inform the user that all scripts have been executed successfully
         print("All scripts executed successfully.")
