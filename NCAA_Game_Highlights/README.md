@@ -8,19 +8,19 @@ This project uses RapidAPI to obtain NCAA game highlights using a Docker contain
 
 The config.py script performs the following actions: Imports necessary environment variables and assigns them to Python variables, providing default values where appropriate. This approach allows for flexible configuration management, enabling different settings for various environments (e.g., development, staging, production) without modifying the source code.
 
-### The fetch.py script performs the following actions
+## The fetch.py script performs the following actions
 
 Establishes the date and league that will be used to find highlights. We are using NCAA in this example because it's included in the free version. This will fetch the highlights from the API and store them in an S3 bucket as a JSON file (basketball_highlight.json)
 
-### Process_1_video.py performs the following actions
+## Process_1_video.py performs the following actions
 
 Connects to the S3 bucket and retrieves the JSON file. Extracts the first video URL from within the JSON file. Downloads the video fiel from the internet into the memory using the requests library. Saves the video as a new file in the S3 bucket under a different folder (videos/) Logs the status of each step
 
-### Mediaconvert_process.py performs the following actions
+## Mediaconvert_process.py performs the following actions
 
 Creates and submits a MediaConvert job Uses MediaConvert to process a video file - configures the video codec, resolution and bitrate. Also configured the audio settings Stores the processed video back into an S3 bucket
 
-### Run_all.py performs the following actions -  
+## Run_all.py performs the following actions -  
 
 Runs the scripts in a chronological order and provides buffer time for the tasks to be created.
 
@@ -28,15 +28,15 @@ Runs the scripts in a chronological order and provides buffer time for the tasks
 
 Stores all over the environment variables, these are variables that we don't want to hardcode into our script.
 
-### Dockerfile
+## Dockerfile
 
 Performs the following actions: Provides the step by step approach to build the image.
 
-### Terraform Scripts -
+## Terraform Scripts -
 
 These scripts are used to created resources in AWS in a scalable and repeatable way. All of the resources we work with like S3, creating IAM user roles, elastic registry service and elastic container services is built here.
 
-### Prerequisites
+## Prerequisites
 
 Before running the scripts, ensure you have the following:
 
