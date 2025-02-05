@@ -27,4 +27,4 @@ RUN apt-get update && apt-get install -y awscli
 # Define the default command to run when the container starts.
 # This uses the Python interpreter to execute the 'run_all.py' script.
 # 'ENTRYPOINT' ensures that this command is always executed, allowing for easier command overrides if necessary.
-ENTRYPOINT ["python", "run_all.py"]
+ENTRYPOINT ["python", "run_ALL.py"]
