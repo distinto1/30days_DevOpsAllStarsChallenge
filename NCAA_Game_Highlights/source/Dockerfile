@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Python scripts and configuration file from the host machine to the current working directory in the container.
 # This includes 'fetch.py', 'process_one_video.py', 'mediaconvert_process.py', 'run_all.py', and 'config.py'.
-COPY fetch.py process_one_video.py mediaconvert_process.py run_all.py config.py . 
+COPY fetch.py process_1_video.py MediaConvert_process.py run_ALL.py config.py ./ 
 
 # Update the package lists for 'apt-get' and install the AWS Command Line Interface (CLI).
 # This allows the container to interact with AWS services if needed.

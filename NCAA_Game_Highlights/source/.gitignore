@@ -33,3 +33,5 @@ node_modules/
 
 # Python virtual environments (if applicable)
 venv/
+.terraform.lock.hcl
+/.terraform
