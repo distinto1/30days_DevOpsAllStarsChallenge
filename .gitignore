@@ -1,1 +1,3 @@
 NCAA_Game_Highlights/source/terraform/.terraform
+*.terraform/providers/
+.terraform/
