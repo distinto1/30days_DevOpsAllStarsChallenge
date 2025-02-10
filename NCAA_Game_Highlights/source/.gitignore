@@ -35,3 +35,5 @@ node_modules/
 venv/
 .terraform.lock.hcl
 /.terraform
+terraform.tfstate
+.tfstate.*
