@@ -25,7 +25,7 @@ resource "aws_ecs_task_definition" "this" {
     bucket_name                = var.s3_bucket_name
     rapidapi_ssm_parameter_arn = var.rapidapi_ssm_parameter_arn
     mediaconvert_endpoint      = var.mediaconvert_endpoint
-    mediaconvert_role_arn      = var.mediaconvert_role_arn
+    mediaconvert_role_arn      = aws_iam_role.mediaconvert_role.arn
   })
 }
 
