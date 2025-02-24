@@ -20,6 +20,20 @@ resource "aws_iam_role" "ecs_task_execution_role" {
   assume_role_policy = data.aws_iam_policy_document.ecs_task_trust.json
 }
 
+# Add to iam.tf
+resource "aws_iam_role_policy" "pass_mediaconvert_role" {
+  name   = "PassMediaConvertRolePolicy"
+  role   = aws_iam_role.ecs_task_execution_role.name
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [{
+      Effect   = "Allow",
+      Action   = "iam:PassRole",
+      Resource = aws_iam_role.mediaconvert_role.arn
+    }]
+  })
+}
+
 # Attach the AWS-managed ECS Task Execution policy
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_attach" {
   role       = aws_iam_role.ecs_task_execution_role.name
@@ -49,6 +63,7 @@ data "aws_iam_policy_document" "ecs_custom_doc" {
     resources = [
       "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/highlight-pipeline-final/*",
       "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/NCAAHighlightsBackup/*",
+	   "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/myproject/rapidapi_key",
       "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/myproject/*"  # Added for broader access if needed
     ]
   }

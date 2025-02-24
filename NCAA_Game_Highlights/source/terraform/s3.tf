@@ -12,3 +12,19 @@ resource "aws_s3_bucket" "highlights" {
   #   }
   # }
 }
+
+resource "aws_s3_bucket_policy" "highlights" {
+  bucket = aws_s3_bucket.highlights.id
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [{
+      Effect    = "Allow",
+      Principal = { AWS = aws_iam_role.ecs_task_execution_role.arn },
+      Action    = ["s3:PutObject", "s3:GetObject", "s3:ListBucket"],
+      Resource  = [
+        "${aws_s3_bucket.highlights.arn}/*",
+        aws_s3_bucket.highlights.arn
+      ]
+    }]
+  })
+}
