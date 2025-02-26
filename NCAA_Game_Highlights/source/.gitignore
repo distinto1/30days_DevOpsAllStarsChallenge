@@ -12,6 +12,7 @@
 *.tfvars.json
 *.tfstate
 *.tfstate.backup
+terraform.tfstate
 
 # ----------------------------
 # Optional: Ignore Other Files
@@ -36,5 +37,4 @@ node_modules/
 venv/
 .terraform.lock.hcl
 /.terraform
-terraform.tfstate
 .tfstate.*
