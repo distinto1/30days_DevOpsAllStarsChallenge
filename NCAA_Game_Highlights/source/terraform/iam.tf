@@ -112,7 +112,7 @@ resource "aws_iam_role" "mediaconvert_role" {
 # Define the MediaConvert policy document
 data "aws_iam_policy_document" "mediaconvert_policy_doc" {
   statement {
-    actions   = ["s3:GetObject", "s3:PutObject"]
+    actions   = ["s3:GetObject", "s3:PutObject", "s3:ListBucket"]
     effect    = "Allow"
     resources = ["arn:aws:s3:::${var.s3_bucket_name}/*"]
   }
