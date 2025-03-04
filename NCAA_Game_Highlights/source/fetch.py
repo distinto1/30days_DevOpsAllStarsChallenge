@@ -9,6 +9,9 @@ import boto3
 # Import the 'requests' library for making HTTP requests to external APIs
 import requests
 
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
 # Import specific configuration variables from the 'config.py' module
 from config import (
     API_URL,             # The endpoint URL for fetching sports highlights
@@ -48,7 +51,10 @@ def fetch_highlights():
 
         # Make a GET request to the API endpoint with the specified headers and query parameters
         # Set a timeout of 120 seconds to prevent hanging requests
-        response = requests.get(API_URL, headers=headers, params=query_params, timeout=120)
+        session = requests.Session()
+        retries = Retry(total=3, backoff_factor=1)
+        session.mount('https://', HTTPAdapter(max_retries=retries))
+        response = session.get(API_URL, headers=headers, params=query_params, timeout=300)
         
         # Raise an HTTPError if the HTTP request returned an unsuccessful status code
         response.raise_for_status()

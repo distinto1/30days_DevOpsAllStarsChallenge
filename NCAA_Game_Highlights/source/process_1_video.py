@@ -50,7 +50,10 @@ def process_one_video():
 
         # Extract the first video URL from the JSON data
         # Adjust the key path ('["data"][0]["url"]') based on the actual structure of your JSON
+        if "data" in highlights and len(highlights["data"]) > 0:
         video_url = highlights["data"][0]["url"]
+        else:
+        raise ValueError("No highlights found in the JSON file.")
 
         # Inform the user about the video URL being processed
         print(f"Processing video URL: {video_url}")
