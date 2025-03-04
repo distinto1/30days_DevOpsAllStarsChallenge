@@ -9,11 +9,11 @@ import os
 
 # The base URL for the sports highlights API. 
 # If the 'API_URL' environment variable is not set, it defaults to the provided URL.
-API_URL = os.getenv("API_URL", "https://sport-highlights-api.p.rapidapi.com/basketball/highlights")
+API_URL = os.getenv("API_URL", "https://nba-ncaab-api.p.rapidapi.com/highlights")
 
 # The host for the RapidAPI service. 
 # If the 'RAPIDAPI_HOST' environment variable is not set, it defaults to the provided host.
-RAPIDAPI_HOST = os.getenv("RAPIDAPI_HOST", "sport-highlights-api.p.rapidapi.com")
+RAPIDAPI_HOST = os.getenv("RAPIDAPI_HOST", "nba-ncaab-api.p.rapidapi.com")
 
 # The API key for authenticating with RapidAPI.
 # No default is provided, so the application will fail at runtime if 'RAPIDAPI_KEY' is not set.
