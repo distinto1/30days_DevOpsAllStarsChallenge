@@ -39,6 +39,20 @@ def fetch_highlights():
         print(f"Error fetching highlights: {e}")
         return None
 
+def create_s3_bucket_if_not_exists():
+    s3 = boto3.client("s3", region_name=AWS_REGION)
+    try:
+        s3.head_bucket(Bucket=S3_BUCKET_NAME)
+    except ClientError:
+        print(f"Creating bucket {S3_BUCKET_NAME}...")
+        if AWS_REGION != "us-east-1":
+            s3.create_bucket(
+                Bucket=S3_BUCKET_NAME,
+                CreateBucketConfiguration={"LocationConstraint": AWS_REGION}
+            )
+        else:
+            s3.create_bucket(Bucket=S3_BUCKET_NAME)
+            
 def save_to_s3(data, file_name):
     """
     Save data to an S3 bucket.
