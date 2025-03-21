@@ -36,13 +36,8 @@
       "Effect": "Allow",
       "Action": "mediaconvert:*",
       "Resource": "*"
-    },
-    {
-      "Sid": "S3BucketCreate",
-      "Effect": "Allow",
-      "Action": ["s3:CreateBucket"],
-      "Resource": "arn:aws:s3:::*"
     }
+
   ]
 }
   
