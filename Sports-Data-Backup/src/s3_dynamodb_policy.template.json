@@ -36,6 +36,12 @@
       "Effect": "Allow",
       "Action": "mediaconvert:*",
       "Resource": "*"
+    },
+	{
+      "Sid": "MediaConvertPassRole",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::${AWS_ACCOUNT_ID}:role/HighlightProcessorRole"
     }
 
   ]
